@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root to: 'static_pages#home'
-
+  get 'users/current' => 'users#current'
   resources :user_sessions
   resources :users
 
   get 'login' => 'user_sessions#new', :as => :login
   get 'logout' => 'user_sessions#destroy', :as => :logout
+
 
 
   # You can have the root of your site routed with "root"
