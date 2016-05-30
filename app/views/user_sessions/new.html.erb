@@ -1,2 +1,17 @@
-<h1>UserSessions#new</h1>
-<p>Find me in app/views/user_sessions/new.html.erb</p>
+
+<div class="form-wrapper text-center">
+  <h1>Login</h1>
+  <%= form_tag user_sessions_path, :method => :post do %>
+    <fieldset class="form-group">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, nil, class: "form-control" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= label_tag :password %>
+      <%= password_field_tag :password, nil, class: "form-control" %>
+    </fieldset>
+    <div>
+      <%= submit_tag "Login", class: "btn btn-blue" %>
+    </div>
+  <% end %>
+</div>
