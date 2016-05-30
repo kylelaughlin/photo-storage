@@ -6,6 +6,7 @@ $(function(){
     var self = this;
     self.firstName = ko.observable();
     self.lastName = ko.observable();
+    self.userId = ko.observable();
     self.dataresponse = ko.observable();
     self.showEdit = function(){
       $("#user-edit").hide().removeClass("display-hide").slideDown(600);
@@ -18,6 +19,7 @@ $(function(){
       alert(data.first_name);
       self.firstName(data.first_name);
       self.lastName(data.last_name);
+      self.userId(data.id);
     });
 
 

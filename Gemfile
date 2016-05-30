@@ -21,7 +21,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "sorcery"
 # Bootstrap for rails https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass'
-
+# Paperclip for image uploading https://github.com/thoughtbot/paperclip
+gem "paperclip"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
