@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'images/all_images' => 'images#all_images'
   get 'images/images_update' => 'images#images_update'
   post 'users/update' => 'users#update'
+  get 'users/:id/:token' => 'users#show'
   resources :user_sessions
   resources :users
 
