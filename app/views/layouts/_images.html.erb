@@ -1,0 +1,5 @@
+<% images.each do |image| %>
+  <div class="image-wrapper">
+    <%=image_tag image.image.url(:medium), class: "image" %>
+  </div>
+<% end %>
