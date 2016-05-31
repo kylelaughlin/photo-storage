@@ -5,7 +5,6 @@ $(function(){
 
   function shareEmail(name, email){
     var self = this;
-    this.emailName = name;
     this.email = email;
   }
 
@@ -82,8 +81,7 @@ $(function(){
       self.email(data.email);
       self.userId(data.id);
       self.myEmails([
-          new shareEmail("Kyle", "kyle@email.com"),
-          new shareEmail("Bob", "bob@email.com")
+
       ])
     });
 
