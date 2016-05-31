@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @image = Image.new
   end
 
   def create

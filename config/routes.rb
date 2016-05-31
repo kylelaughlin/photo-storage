@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'static_pages#home'
   get 'users/current' => 'users#current'
+  post 'images/upload' => 'images#upload'
   resources :user_sessions
   resources :users
 
