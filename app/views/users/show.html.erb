@@ -5,8 +5,8 @@
     </div>
     <div class="col-md-6">
       <p>
-        <%= link_to "Like Images", "javascript:void(0)" %> |
-        <%= link_to "Manage Your Images", "javascript:void(0)" %> |
+        <a href="javascript:void(0)" data-bind="click: showImages">Images</a> |
+        <a href="javascript:void(0)" data-bind="click: showShare">Share</a> |
         <a href="javascript:void(0)" data-bind="click: showEdit">Edit Personal Info</a>
       </p>
     </div>
@@ -31,11 +31,32 @@
         <input type="submit" class="btn btn-default" data-bind="click: hideEdit">
       </div>
 
-      <input type="file" id="file-selected" name="images[]" multiple>
-      <div class="btn btn-primary" data-bind="click: uploadImage">Upload Images</div>
-      <div class="flex-wrapper" id="image-wrapper">
-        <%= render partial: 'layouts/images', locals: {images: @images}  %>
+      <div id="image-show">
+        <input type="file" id="file-selected" name="images[]" multiple>
+        <div class="btn btn-primary" data-bind="click: uploadImage">Upload Images</div>
+        <div class="flex-wrapper" id="image-wrapper">
+          <%= render partial: 'layouts/images', locals: {images: @images}  %>
+        </div>
       </div>
+
+      <div class="display-hide" id="email-share">
+        <h1>Emails</h1>
+        <table>
+          <thead><tr>
+              <th>Name</th><th>Email</th>
+          </tr></thead>
+          <tbody data-bind="foreach: myEmails">
+              <tr>
+                  <td><input data-bind="value: emailName" /></td>
+                  <td><input data-bind="value: email" /></td>
+                  <td><a href="#" data-bind="click: $root.removeEmail">Remove</a></td>
+              </tr>
+          </tbody>
+        </table>
+        <button data-bind="click: addEmail" class="btn btn-default">Add Email</button>
+
+      </div>
+
     </div>
   </div>
 

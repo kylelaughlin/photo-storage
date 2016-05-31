@@ -2,13 +2,20 @@
 // All this logic will automatically be available in application.js.
 
 $(function(){
+
+  function shareEmail(name, email){
+    var self = this;
+    this.emailName = name;
+    this.email = email;
+  }
+
   function userModel() {
     var self = this;
     self.firstName = ko.observable();
     self.lastName = ko.observable();
     self.email = ko.observable();
     self.userId = ko.observable();
-    self.myImages = ko.observableArray([]);
+    self.myEmails = ko.observableArray([]);
 
     self.uploadImage = function(){
       alert("start file upload");
@@ -50,12 +57,34 @@ $(function(){
       $("#user-edit").slideUp(200);
     }
 
+    self.showShare = function(){
+      $("#image-show").addClass("display-hide");
+      $("#email-share").removeClass("display-hide");
+    }
+
+    self.showImages = function(){
+      $("#email-share").addClass("display-hide");
+      $("#image-show").removeClass("display-hide");
+    }
+
+    self.addEmail = function(){
+      self.myEmails.push(new shareEmail("", ""));
+    }
+
+    self.removeEmail = function(email){
+      self.myEmails.remove(email);
+    }
+
     $.get('/users/current', function(data){
       alert(data.first_name);
       self.firstName(data.first_name);
       self.lastName(data.last_name);
       self.email(data.email);
       self.userId(data.id);
+      self.myEmails([
+          new shareEmail("Kyle", "kyle@email.com"),
+          new shareEmail("Bob", "bob@email.com")
+      ])
     });
 
     $.get('/images/all_images', function(data){

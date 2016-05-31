@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
 
   has_many :images
+  has_many :emails
 end
