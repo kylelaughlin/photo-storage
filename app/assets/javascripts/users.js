@@ -6,6 +6,7 @@ $(function(){
     var self = this;
     self.firstName = ko.observable();
     self.lastName = ko.observable();
+    self.email = ko.observable();
     self.userId = ko.observable();
     self.myImages = ko.observableArray([]);
 
@@ -28,7 +29,10 @@ $(function(){
         processData: false,
         contentType: false,
         success: function(data){
-          alert("hello");
+          $.ajax({
+            url: '/images/images_update',
+            type: 'get'
+          });
         }
       });
     }
@@ -37,6 +41,12 @@ $(function(){
       $("#user-edit").hide().removeClass("display-hide").slideDown(600);
     }
     self.hideEdit = function(){
+      var postData = {first_name: self.firstName, last_name: self.lastName, email: self.email}
+      $.ajax({
+        url: '/users/update',
+        type: 'post',
+        data: postData
+      });
       $("#user-edit").slideUp(200);
     }
 
@@ -44,9 +54,14 @@ $(function(){
       alert(data.first_name);
       self.firstName(data.first_name);
       self.lastName(data.last_name);
+      self.email(data.email);
       self.userId(data.id);
     });
 
+    $.get('/images/all_images', function(data){
+      alert(data);
+      self.myImages(data);
+    });
 
   }
 

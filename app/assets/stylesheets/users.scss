@@ -5,3 +5,22 @@
 .display-hide{
   display: none;
 }
+
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-wrapper {
+  width: 300px;
+  border-style: solid;
+  border-width: thin;
+  margin: 10px;
+
+}
+
+.image {
+  max-width: 100%;
+  max-height: 300px;
+}

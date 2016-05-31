@@ -17,10 +17,20 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @images = Image.where(user_id: @user.id)
   end
 
   def current
     render :json => current_user
+  end
+
+  def update
+    @user = current_user
+    @user.update_attributes(first_name: params[:first_name],
+                            last_name: params[:last_name],
+                            email: params[:email])
+    render nothing: true
   end
 
   private
