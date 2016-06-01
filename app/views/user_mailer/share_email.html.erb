@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @user.first_name %> would like to share photos with you!</h1>
+    <p>
+      Follow the provided link to view the photos. Careful, don't lose this link
+       as it is the only way to access the page.
+    </p>
+    <p>
+      <%=link_to "#{@url}", @url %>
+    </p>
+    <p>Thanks!</p>
+  </body>
+</html>
