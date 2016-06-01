@@ -2,8 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.container {
+  width: 95%;
+}
+
 .display-hide{
   display: none;
+}
+
+h1 {
+  margin-bottom: 0px;
 }
 
 .flex-wrapper {
@@ -37,4 +45,9 @@
 
 .margin-10 {
   margin: 10px;
+}
+
+.card-panel {
+  width: 300px;
+  margin: auto;
 }

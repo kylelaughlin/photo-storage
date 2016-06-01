@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col m6">
       <% if @guest %>
         <h1><%=@name%></h1>
       <% else %>
         <h1 data-bind="text: firstName"></h1>
       <% end %>
     </div>
-    <div class="col-md-6">
+    <div class="col m6">
       <% if !@guest %>
         <p>
           <a href="javascript:void(0)" data-bind="click: showImages">Images</a> |
@@ -19,20 +19,17 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col s12">
 
       <% if !@guest %>
-        <div id="user-edit" class="display-hide info-form">
+        <div id="user-edit" class="display-hide card-panel input-field">
           <fieldset class="form-group">
-            <%= label_tag :first_name %>
             <input data-bind="value: firstName" id="first_name"/>
           </fieldset>
           <fieldset class="form-group">
-            <%= label_tag :last_name %>
             <input data-bind="value: lastName" id="last_name"/>
           </fieldset>
           <fieldset class="form-group">
-            <%= label_tag :email %>
             <input data-bind="value: email" id="email"/>
           </fieldset>
           <input type="submit" class="btn btn-default" data-bind="click: hideEdit">

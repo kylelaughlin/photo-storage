@@ -19,8 +19,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # Sorcery for user authentication https://github.com/NoamB/sorcery
 gem "sorcery"
-# Bootstrap for rails https://github.com/twbs/bootstrap-sass
-gem 'bootstrap-sass'
 # Paperclip for image uploading https://github.com/thoughtbot/paperclip
 gem "paperclip"
 # Figaro for handling Environment Variables https://github.com/laserlemon/figaro
