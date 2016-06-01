@@ -8,6 +8,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      token = SecureRandom.hex[0,20].upcase
+      @user.url_token = token
+      @user.save
       @user = login(user_params[:email], user_params[:password])
       redirect_to user_path(@user), notice: "User Created!"
     else
@@ -17,8 +20,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @images = Image.where(user_id: @user.id)
+    @user = User.find(params[:id])
+    if @user == current_user || params[:token] == @user.url_token
+      if params[:token] == @user.url_token
+        @guest = true
+      else
+        @guest = false
+      end
+      @images = Image.where(user_id: @user.id)
+    else
+      flash.now[:alert] = "You do not have access to that user's photos"
+      redirect_to root_path
+    end
   end
 
   def current
@@ -35,7 +48,7 @@ class UsersController < ApplicationController
 
   def mailer
     email_string = params[:myEmail].join(", ")
-    UserMailer.welcome_email(current_user, email_string).deliver_now
+    UserMailer.share_email(current_user, email_string).deliver_now
     render nothing: true
   end
 

@@ -2,10 +2,10 @@ class UserMailer < ApplicationMailer
 
   default from: 'thekylelaughlin@gmail.com'
 
-  def welcome_email(user, emails)
+  def share_email(user, emails)
     @user = user
-    @url  = 'http://example.com/login'
-    mail(to: emails, subject: 'Welcome to My Awesome Site')
+    @url  = "localhost:3000/users/#{@user.id}/#{@user.url_token}"
+    mail(to: emails, subject: "#{@user.first_name} would like to share photos with you")
   end
 
 end
