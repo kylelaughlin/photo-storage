@@ -23,7 +23,7 @@ $(function(){
       alert(files[0]);
       var formData = new FormData();
       for(var i= 0; i < files.length; i++){
-        var file = files[0];
+        var file = files[i];
         formData.append('images[]',file);
       };
       $.ajax({
