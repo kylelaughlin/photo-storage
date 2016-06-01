@@ -1,7 +1,6 @@
 class ImagesController < ApplicationController
 
   def upload
-
     @user = current_user
     params[:images].each do |image|
       Image.create(image:image, user_id: @user.id)

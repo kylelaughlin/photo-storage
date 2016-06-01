@@ -7,11 +7,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    token = SecureRandom.hex[0,20].upcase
+    @user.url_token = token
     if @user.save
-      token = SecureRandom.hex[0,20].upcase
-      @user.url_token = token
-      @user.save
-      current_user = @user
       @user = login(user_params[:email], user_params[:password])
       redirect_to user_path(@user), notice: "User Created!"
     else
