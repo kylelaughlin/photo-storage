@@ -17,10 +17,8 @@ $(function(){
     self.myEmails = ko.observableArray([]);
 
     self.uploadImage = function(){
-      alert("start file upload");
       var fileSelect = document.getElementById('file-selected');
       var files = fileSelect.files;
-      alert(files[0]);
       var formData = new FormData();
       for(var i= 0; i < files.length; i++){
         var file = files[i];
