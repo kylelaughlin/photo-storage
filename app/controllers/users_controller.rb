@@ -33,6 +33,12 @@ class UsersController < ApplicationController
     render nothing: true
   end
 
+  def mailer
+    email_string = params[:myEmail].join(", ")
+    UserMailer.welcome_email(current_user, email_string).deliver_now
+    render nothing: true
+  end
+
   private
 
   def user_params

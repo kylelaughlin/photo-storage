@@ -74,6 +74,23 @@ $(function(){
       self.myEmails.remove(email);
     }
 
+    self.sendEmail = function(){
+      var emailList = [];
+      for(var i = 0; i < self.myEmails().length; i++){
+        emailList.push(self.myEmails()[i].email);
+      };
+      var postData = {};
+      postData["myEmail"] = emailList;
+      $.ajax({
+        url: '/users/mailer',
+        type: 'get',
+        data: postData,
+        success: function(){
+          self.myEmails([]);
+        }
+      });
+    }
+
     $.get('/users/current', function(data){
       alert(data.first_name);
       self.firstName(data.first_name);
@@ -83,11 +100,6 @@ $(function(){
       self.myEmails([
 
       ])
-    });
-
-    $.get('/images/all_images', function(data){
-      alert(data);
-      self.myImages(data);
     });
 
   }

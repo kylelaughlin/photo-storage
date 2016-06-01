@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'images/images_update' => 'images#images_update'
   post 'users/update' => 'users#update'
   get 'users/:id/:token' => 'users#show'
+  get 'users/mailer' => 'users#mailer'
   resources :user_sessions
   resources :users
 
