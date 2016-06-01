@@ -92,7 +92,6 @@ $(function(){
     }
 
     $.get('/users/current', function(data){
-      alert(data.first_name);
       self.firstName(data.first_name);
       self.lastName(data.last_name);
       self.email(data.email);

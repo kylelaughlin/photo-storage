@@ -22,7 +22,7 @@
     <div class="col-xs-12">
 
       <% if !@guest %>
-        <div id="user-edit" class="display-hide">
+        <div id="user-edit" class="display-hide info-form">
           <fieldset class="form-group">
             <%= label_tag :first_name %>
             <input data-bind="value: firstName" id="first_name"/>
@@ -42,7 +42,7 @@
       <div id="image-show" class="full-width">
         <% if !@guest %>
           <input type="file" id="file-selected" name="images[]" multiple>
-          <div class="btn btn-primary" data-bind="click: uploadImage">Upload Images</div>
+          <div class="btn btn-primary margin-10" data-bind="click: uploadImage">Upload Images</div>
         <% end %>
         <div class="flex-wrapper" id="image-wrapper">
           <%= render partial: 'layouts/images', locals: {images: @images}  %>
@@ -58,7 +58,7 @@
             </tr></thead>
             <tbody data-bind="foreach: myEmails">
                 <tr>
-                    <td><input data-bind="value: email" /></td>
+                    <td><input data-bind="value: email" class="margin-10"/></td>
                     <td><a href="#" data-bind="click: $root.removeEmail">Remove</a></td>
                 </tr>
             </tbody>
