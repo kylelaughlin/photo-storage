@@ -1,61 +1,72 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <h1 data-bind="text: firstName"></h1>
+      <% if @guest %>
+        <h1><%=@name%></h1>
+      <% else %>
+        <h1 data-bind="text: firstName"></h1>
+      <% end %>
     </div>
     <div class="col-md-6">
-      <p>
-        <a href="javascript:void(0)" data-bind="click: showImages">Images</a> |
-        <a href="javascript:void(0)" data-bind="click: showShare">Share</a> |
-        <a href="javascript:void(0)" data-bind="click: showEdit">Edit Personal Info</a>
-      </p>
+      <% if !@guest %>
+        <p>
+          <a href="javascript:void(0)" data-bind="click: showImages">Images</a> |
+          <a href="javascript:void(0)" data-bind="click: showShare">Share</a> |
+          <a href="javascript:void(0)" data-bind="click: showEdit">Edit Personal Info</a>
+        </p>
+      <% end %>
     </div>
   </div>
   <hr>
   <div class="row">
     <div class="col-xs-12">
 
-      <div id="user-edit" class="display-hide">
-        <fieldset class="form-group">
-          <%= label_tag :first_name %>
-          <input data-bind="value: firstName" id="first_name"/>
-        </fieldset>
-        <fieldset class="form-group">
-          <%= label_tag :last_name %>
-          <input data-bind="value: lastName" id="last_name"/>
-        </fieldset>
-        <fieldset class="form-group">
-          <%= label_tag :email %>
-          <input data-bind="value: email" id="email"/>
-        </fieldset>
-        <input type="submit" class="btn btn-default" data-bind="click: hideEdit">
-      </div>
+      <% if !@guest %>
+        <div id="user-edit" class="display-hide">
+          <fieldset class="form-group">
+            <%= label_tag :first_name %>
+            <input data-bind="value: firstName" id="first_name"/>
+          </fieldset>
+          <fieldset class="form-group">
+            <%= label_tag :last_name %>
+            <input data-bind="value: lastName" id="last_name"/>
+          </fieldset>
+          <fieldset class="form-group">
+            <%= label_tag :email %>
+            <input data-bind="value: email" id="email"/>
+          </fieldset>
+          <input type="submit" class="btn btn-default" data-bind="click: hideEdit">
+        </div>
+      <% end %>
 
-      <div id="image-show">
-        <input type="file" id="file-selected" name="images[]" multiple>
-        <div class="btn btn-primary" data-bind="click: uploadImage">Upload Images</div>
+      <div id="image-show" class="full-width">
+        <% if !@guest %>
+          <input type="file" id="file-selected" name="images[]" multiple>
+          <div class="btn btn-primary" data-bind="click: uploadImage">Upload Images</div>
+        <% end %>
         <div class="flex-wrapper" id="image-wrapper">
           <%= render partial: 'layouts/images', locals: {images: @images}  %>
         </div>
       </div>
 
-      <div class="display-hide" id="email-share">
-        <h1>Emails</h1>
-        <table>
-          <thead><tr>
-              <th>Email</th>
-          </tr></thead>
-          <tbody data-bind="foreach: myEmails">
-              <tr>
-                  <td><input data-bind="value: email" /></td>
-                  <td><a href="#" data-bind="click: $root.removeEmail">Remove</a></td>
-              </tr>
-          </tbody>
-        </table>
-        <button data-bind="click: addEmail" class="btn btn-default">Add Email</button>
-        <button data-bind="click: sendEmail" class="btn btn-primary">Share</button>
-      </div>
-
+      <% if !@guest %>
+        <div class="display-hide" id="email-share">
+          <h1>Emails</h1>
+          <table>
+            <thead><tr>
+                <th>Email</th>
+            </tr></thead>
+            <tbody data-bind="foreach: myEmails">
+                <tr>
+                    <td><input data-bind="value: email" /></td>
+                    <td><a href="#" data-bind="click: $root.removeEmail">Remove</a></td>
+                </tr>
+            </tbody>
+          </table>
+          <button data-bind="click: addEmail" class="btn btn-default">Add Email</button>
+          <button data-bind="click: sendEmail" class="btn btn-primary">Share</button>
+        </div>
+      <% end %>
     </div>
   </div>
 

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       token = SecureRandom.hex[0,20].upcase
       @user.url_token = token
       @user.save
+      current_user = @user
       @user = login(user_params[:email], user_params[:password])
       redirect_to user_path(@user), notice: "User Created!"
     else
@@ -22,8 +23,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user == current_user || params[:token] == @user.url_token
-      if params[:token] == @user.url_token
+      if params[:token]
         @guest = true
+        @name = params[:name]
       else
         @guest = false
       end
