@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
 
   def share_email(user, emails)
     @user = user
-    @url  = "/#{@user.id}/#{@user.first_name}/#{@user.url_token}"
+    @url  = "ancient-hollows-81950.herokuapp.com/#{@user.id}/#{@user.first_name}/#{@user.url_token}"
     mail(to: emails, subject: "#{@user.first_name} would like to share photos with you")
   end
 
