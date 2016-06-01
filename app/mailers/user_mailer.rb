@@ -1,2 +1,11 @@
 class UserMailer < ApplicationMailer
+
+  default from: 'thekylelaughlin@gmail.com'
+
+  def welcome_email(user)
+    @user = user
+    @url  = 'http://example.com/login'
+    mail(to: "kylejlaughlin@icloud.com, thekylelaughlin@gmail.com", subject: 'Welcome to My Awesome Site')
+  end
+
 end

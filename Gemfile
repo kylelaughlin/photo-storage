@@ -23,6 +23,8 @@ gem "sorcery"
 gem 'bootstrap-sass'
 # Paperclip for image uploading https://github.com/thoughtbot/paperclip
 gem "paperclip"
+# Figaro for handling Environment Variables https://github.com/laserlemon/figaro
+gem "figaro"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
