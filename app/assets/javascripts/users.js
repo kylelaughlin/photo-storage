@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 
 $(function(){
-  
+
   // initialize an email to be shared
   function shareEmail(name, email){
     var self = this;

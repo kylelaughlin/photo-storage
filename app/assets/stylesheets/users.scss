@@ -43,11 +43,26 @@ h1 {
   margin-bottom: 20px;
 }
 
+.upload-form{
+  border-style: dashed;;
+  border-width: thin;
+  border-radius: 5px;
+  padding: 10px;
+  width: 400px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
 .margin-10 {
   margin: 10px;
 }
 
 .card-panel {
   width: 300px;
+  margin: auto;
+}
+
+.email-form {
+  width: 350px;
   margin: auto;
 }

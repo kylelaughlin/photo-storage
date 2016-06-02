@@ -38,8 +38,10 @@
 
       <div id="image-show" class="full-width">
         <% if !@guest %>
-          <input type="file" id="file-selected" name="images[]" multiple>
-          <div class="btn btn-primary margin-10" data-bind="click: uploadImage">Upload Images</div>
+          <div class="upload-form center-align">
+            <input type="file" id="file-selected" name="images[]" multiple>
+            <div class="btn btn-primary margin-10" data-bind="click: uploadImage">Upload Images</div>
+          </div>
         <% end %>
         <div class="flex-wrapper" id="image-wrapper">
           <%= render partial: 'layouts/images', locals: {images: @images}  %>
@@ -47,8 +49,12 @@
       </div>
 
       <% if !@guest %>
-        <div class="display-hide" id="email-share">
-          <h1>Emails</h1>
+        <div class="display-hide email-form" id="email-share">
+          <p>
+            Let people see your photos! Add emails below for those you wish to
+            share your images with. A link will be sent allowing them to view your
+            gallery.
+          </p>
           <table>
             <thead><tr>
                 <th>Email</th>
